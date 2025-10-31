@@ -1,0 +1,30 @@
+
+spring:
+  application:
+    name: examsite
+  mustache:
+    suffix: .mustache
+    charset: UTF-8
+    expose-request-attributes: true
+  mvc:
+    view:
+      suffix: .mustache
+  datasource:
+    url: jdbc:h2:mem:exam;MODE=MySQL;DATABASE_TO_LOWER=TRUE;CASE_INSENSITIVE_IDENTIFIERS=TRUE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc.time_zone: Asia/Seoul
+    open-in-view: false
+server:
+  port: 8080

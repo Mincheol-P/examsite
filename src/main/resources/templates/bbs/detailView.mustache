@@ -1,0 +1,38 @@
+{{> _header}}
+
+<!-- 읽기 전용 카드 -->
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 class="h5 m-0"></h3>
+        <div class="d-flex gap-2">
+            <!-- 삭제는 동일 동작 -->
+            <form method="post" action="/bbs/{{item.id}}/delete" class="m-0"
+                  onsubmit="return confirm('삭제하시겠습니까?');">
+                <button type="submit" class="btn btn-outline-danger">삭제</button>
+            </form>
+            <!-- 수정은 편집 화면(detail.mustache)로 이동 -->
+            <a href="/bbs/{{item.id}}" class="btn btn-primary">수정</a>
+        </div>
+    </div>
+
+    <div class="card-body">
+        {{#item.pinned}}<p class="mb-3"><span class="badge text-bg-warning">★</span></p>{{/item.pinned}}
+
+        <!-- 필드들은 읽기 전용 -->
+        <div class="mb-3">
+            <label class="form-label">제목</label>
+            <input type="text" class="form-control" value="{{item.title}}" readonly>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">내용</label>
+            <textarea rows="8" class="form-control" readonly style="background: #f8f9fa;">{{item.content}}</textarea>
+        </div>
+
+        <div class="mt-4 d-flex justify-content-start">
+            <a href="/bbs" class="btn btn-outline-secondary">목록</a>
+        </div>
+    </div>
+</div>
+
+{{> _footer}}

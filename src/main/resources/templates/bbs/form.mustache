@@ -1,0 +1,39 @@
+{{> _header}}
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h2 class="h4 mb-0">공지 작성</h2>
+        <a href="/bbs" class="btn btn-outline-secondary">목록</a>
+    </div>
+
+    <div class="card-body">
+        <form method="post" action="/bbs" class="row g-3"
+              onsubmit="return confirm('저장하시겠습니까?');">
+            <div class="col-12">
+                <label for="title" class="form-label">제목</label>
+                <input id="title" name="title" type="text" required class="form-control" placeholder="제목을 입력하세요">
+            </div>
+
+            <div class="col-12">
+                <label for="content" class="form-label">내용</label>
+                <textarea id="content" name="content" rows="8" required class="form-control"
+                          placeholder="내용을 입력하세요"></textarea>
+            </div>
+
+            <div class="col-12 form-check">
+                <input id="pinned" name="pinned" type="checkbox" class="form-check-input">
+                <label for="pinned" class="form-check-label">상단고정</label>
+            </div>
+
+            <div class="col-12 d-flex justify-content-end gap-2">
+                <button type="reset" class="btn btn-outline-secondary"
+                        onclick="return confirm('입력 내용을 모두 초기화하시겠습니까?');">
+                    초기화
+                </button>
+                <button type="submit" class="btn btn-primary px-4">저장</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{{> _footer}}

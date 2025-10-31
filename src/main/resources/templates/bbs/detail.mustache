@@ -1,0 +1,41 @@
+{{> _header}}
+
+<!-- 수정 카드 -->
+<div id="editForm" class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 class="h5 m-0">수정</h3>
+        <div class="d-flex gap-2">
+            <!-- 삭제 -->
+            <form method="post" action="/bbs/{{item.id}}/delete" class="m-0"
+                  onsubmit="return confirm('삭제하시겠습니까?');">
+                <button type="submit" class="btn btn-outline-danger">삭제</button>
+            </form>
+            <!-- 수정 -->
+            <button type="button" class="btn btn-primary"
+                    onclick="if(confirm('수정 내용을 저장하시겠습니까?')){ document.getElementById('editFormSubmit').click(); }">
+                수정
+            </button>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <form method="post" action="/bbs/{{item.id}}" class="row g-3">
+            <div class="col-12">
+                <label for="title" class="form-label">제목</label>
+                <input id="title" name="title" type="text" value="{{item.title}}" required class="form-control">
+            </div>
+            <div class="col-12">
+                <label for="content" class="form-label">내용</label>
+                <textarea id="content" name="content" rows="8" required class="form-control">{{item.content}}</textarea>
+            </div>
+
+            <div class="col-12 d-flex justify-content-between">
+                <a href="/bbs" class="btn btn-outline-secondary">목록</a>
+                <!-- 상단 '수정'이 클릭하는 실제 제출 버튼 -->
+                <button id="editFormSubmit" type="submit" class="btn btn-primary px-4" hidden>수정 저장</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{{> _footer}}
